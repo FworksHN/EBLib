@@ -17,7 +17,7 @@ public class VectorUtil {
 	 */
 	public static boolean canBlockBeSeen(Entity entity,int pX, int pY, int pZ, boolean toTop, boolean do1, boolean do2) {
 		// ブロックの可視判定
-		World worldObj = entity.worldObj;
+		World worldObj = entity.world;
 		BlockPos pos = new BlockPos(pX, pY, pZ);
 		IBlockState state = worldObj.getBlockState(pos);
 		Block lblock = state.getBlock();
@@ -46,7 +46,7 @@ public class VectorUtil {
 	 * 基本的にcanBlockBeSeenに同じ。違いは足元基準で「通れるか」を判断するもの
 	 */
 	public static boolean canMoveThrough(Entity pEntity, double fixHeight, double pX, double pY, double pZ, boolean toTop, boolean do1, boolean do2){
-		Block lblock = pEntity.worldObj.getBlockState(new BlockPos(pX, pY, pZ)).getBlock();
+		Block lblock = pEntity.world.getBlockState(new BlockPos(pX, pY, pZ)).getBlock();
 		if (lblock == null) {
 			return false;
 		}
@@ -54,7 +54,7 @@ public class VectorUtil {
 		
 		Vec3d vec3do = new Vec3d(pEntity.posX, pEntity.posY+fixHeight, pEntity.posZ);
 		Vec3d vec3dt = new Vec3d(pX, pY, pZ);
-		RayTraceResult movingobjectposition = pEntity.worldObj.rayTraceBlocks(vec3do, vec3dt, do1, do2, false);
+		RayTraceResult movingobjectposition = pEntity.world.rayTraceBlocks(vec3do, vec3dt, do1, do2, false);
 		
 		if (movingobjectposition != null && movingobjectposition.typeOfHit == RayTraceResult.Type.BLOCK) {
 			if (movingobjectposition.getBlockPos().getX() == (int)pX && 

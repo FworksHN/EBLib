@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 		modid = "net.blacklab.lib",
 		name="EBLib",
 		version=EBLib.VERSION,
-		acceptedMinecraftVersions="[1.9,1.10.2]",
+		acceptedMinecraftVersions="[1.11]",
 		updateJSON = "http://mc.el-blacklab.net/eblib-version.json")
 public class EBLib {
 
